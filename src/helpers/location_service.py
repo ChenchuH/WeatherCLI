@@ -9,7 +9,6 @@ def get_location_data(location_name: str):
         return None
     
     else:
-
         return loc.latitude, loc.longitude
         
 

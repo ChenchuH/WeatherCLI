@@ -3,8 +3,27 @@ from weathercli.helpers.location_service import get_location_data
 from weathercli.helpers.weather_codes import weather_code_values
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich import print
+import requests
+import importlib.metadata
+
+CURRENT_VER = importlib.metadata.version("weathercli")
+
+def chec_ver():
+    try:
+        res = requests.get("https://api.github.com/repos/ChenchuH/WeatherCLI/releases/latest",timeout=3)
+        data = res.json()
+        return data["tag_name"].lstrip("v")
+    except:
+        None
+
+def check_for_update():
+    latest = chec_ver()
+    if latest and latest != CURRENT_VER:
+        print(f"[yellow]Update available: {CURRENT_VER} → {latest}[/yellow]")
+        print("[cyan]Run: pipx upgrade weathercli[/cyan]")
 
 def main():
+    check_for_update()
     query = input("> ").strip()
     if not query.lower().startswith("weather at "):
         print("Use: Weather at <location>")

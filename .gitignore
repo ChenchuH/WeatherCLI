@@ -1,3 +1,5 @@
 .venv
 src/weathercli/helpers/__pycache__
 src/weathercli/__pycache__
+src/weathercli.egg-info
+

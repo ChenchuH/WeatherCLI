@@ -1,6 +1,6 @@
-from helpers.weather_service import get_weather_data
-from helpers.location_service import get_location_data
-from helpers.weather_codes import weather_code_values
+from weathercli.helpers.weather_service import get_weather_data
+from weathercli.helpers.location_service import get_location_data
+from weathercli.helpers.weather_codes import weather_code_values
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich import print
 

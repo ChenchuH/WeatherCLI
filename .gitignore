@@ -1,2 +1,3 @@
 .venv
-src/helpers/__pycache__/
+src/weathercli/helpers/__pycache__
+src/weathercli/__pycache__

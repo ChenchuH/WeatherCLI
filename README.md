@@ -14,6 +14,9 @@ ex. ```Weather in Los Angeles```
 
 ```pipx install "git+https://github.com/ChenchuH/WeatherCLI.git"``` to run as a CLI tool as intended, must have pipx installed prior
 
+## To upgrade CLI tool
+```pipx upgrade weathercli```
+
 ## pipx install (wsl/ubuntu)
 ```
 sudo apt update

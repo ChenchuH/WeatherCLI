@@ -1,6 +1,7 @@
 from helpers.weather_service import get_weather_data
 from helpers.location_service import get_location_data
 from rich.progress import Progress, SpinnerColumn, TextColumn
+from rich import print
 
 query = input("> ").strip()
 
@@ -11,9 +12,9 @@ if not query.lower().startswith("weather at "):
 location = query[11:].strip()
 
 
-with Progress(SpinnerColumn(), TextColumn("[cyan]Fetching...")) as progress:
+with Progress(SpinnerColumn(), TextColumn("{task.description}"), transient=True) as progress:
 
-    task = progress.add_task("work", total=2)
+    task = progress.add_task("[cyan]Fetching...[/cyan]", total=2)
 
     lat, long = get_location_data(location)
     progress.update(task, advance=1)
@@ -24,4 +25,4 @@ with Progress(SpinnerColumn(), TextColumn("[cyan]Fetching...")) as progress:
 temp = weather["current"]["temperature_2m"]
 unit = weather["current_units"]["temperature_2m"]
 
-print(f"Currently ~{temp}{unit} @ {location}")
+print(f"Currently [green]~{temp}{unit}[/green] @ [white]{location}[/white]")

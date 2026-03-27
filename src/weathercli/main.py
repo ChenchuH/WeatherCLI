@@ -1,6 +1,6 @@
 from weathercli.helpers.weather_service import get_weather_data
 from weathercli.helpers.location_service import get_location_data
-from weathercli.helpers.weather_codes import weather_code_values, wind_dir_helper
+from weathercli.helpers.weather_codes import weather_code_values, weather_code_icons, wind_dir_helper
 
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich import print
@@ -62,6 +62,7 @@ def main():
 
         code = weather["current"]["weather_code"]
         desc = weather_code_values.get(code, "Unknown")
+        desc_icons = weather_code_icons.get(code, "Unknown")
 
         temp = weather["current"]["temperature_2m"]
         apparent_temp = weather["current"]["apparent_temperature"]
@@ -89,15 +90,15 @@ def main():
         if args.compact and args.detailed:
             print("use weathercli --compact OR --detailed not both")
             return
-        elif args.compact:
-            print(f"[white]{temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{rain_str}[/white]")
+        elif args.compact: 
+            print(f"[white]{desc_icons}  {temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{rain_str}[/white]")
         elif args.detailed:
             print(f"[white]{formated_date_time}[/white]") 
-            print(f"[white]{temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{rain_str}[/white]")
+            print(f"[white]{desc_icons}  {temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{rain_str}[/white]")
             print(f"[white]Humidity {humidity}% · Wind {wind_dir_cardinal} {wind_speed} {wind_speed_units} · Gusts {wind_gust} {wind_speed_units}[/white]")
         else:
             print(f"[white]{formated_date_time}[/white]") 
-            print(f"[white]{temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{rain_str}[/white]")
+            print(f"[white]{desc_icons}  {temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{rain_str}[/white]")
             print(f"[white]Humidity {humidity}% · Wind {wind_dir_cardinal} {wind_speed} {wind_speed_units} · Gusts {wind_gust} {wind_speed_units}[/white]")
 
     except Exception as e:

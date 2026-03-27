@@ -17,3 +17,8 @@ weather_code_values = {
 80: "Rain showers", 
 95: "Thunderstorm", 
 }
+
+def wind_dir_helper(angle: float) -> str:
+    card_points= ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
+    index = int((angle + 22.5) % 360 //45)
+    return card_points[index]

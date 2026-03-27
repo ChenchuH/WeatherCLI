@@ -1,20 +1,24 @@
 from weathercli.helpers.weather_service import get_weather_data
 from weathercli.helpers.location_service import get_location_data
 from weathercli.helpers.weather_codes import weather_code_values
+from weathercli.helpers.weather_codes import wind_dir_helper
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich import print
 import requests
 import importlib.metadata
+from datetime import datetime
 
 CURRENT_VER = importlib.metadata.version("weathercli")
 
 def chec_ver():
     try:
         res = requests.get("https://api.github.com/repos/ChenchuH/WeatherCLI/releases/latest",timeout=3)
+        res.raise_for_status() 
         data = res.json()
         return data["tag_name"].lstrip("v")
-    except:
-        None
+    except requests.exceptions.RequestException as e:
+        print(f"update check failed {e}")
+        return None
 
 def check_for_update():
     latest = chec_ver()
@@ -38,13 +42,25 @@ def main():
             weather = get_weather_data(lat,long)
             progress.update(task, advance=1)
 
-        code = weather["current"]["weathercode"]
+        code = weather["current"]["weather_code"]
         desc = weather_code_values.get(code, "Unknown")
 
         temp = weather["current"]["temperature_2m"]
-        unit = weather["current_units"]["temperature_2m"]
+        apparent_temp = weather["current"]["apparent_temperature"]
+        weather_unit = weather["current_units"]["temperature_2m"]
+        wind_speed = weather["current"]["wind_speed_10m"]
+        wind_speed_units = weather["current_units"]["wind_speed_10m"]
+        wind_gust = weather["current"]["wind_gusts_10m"]
+        wind_dir = weather["current"]["wind_direction_10m"]
+        humidity = weather["current"]["relative_humidity_2m"]
+        date_time = weather["current"]["time"]
 
-        print(f"Currently [bold][white]~{temp}{unit} - {desc}[/white][/bold]")
+        wind_dir_cardinal = wind_dir_helper(wind_dir)
+
+        dt = datetime.fromisoformat(date_time)
+        formated_date_time = dt.strftime("%m/%d/%Y %I:%M %p")
+
+        print(f"[bold][white]{formated_date_time} · {temp}{weather_unit} (feels {apparent_temp}{weather_unit}) · {desc}\nHumidity {humidity}% · Wind {wind_dir_cardinal} {wind_speed}{wind_speed_units} (gusts {wind_gust}{wind_speed_units})[/white][/bold]")
 
     except Exception as e:
         print(f"error: {e}")

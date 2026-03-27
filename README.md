@@ -2,7 +2,7 @@
     \  /          WEATHER CLI
   _ /"".-.        ───────────
     \_(   ).      Fast • Simple • Terminal Weather
-    /(___(__)
+    /(___(__)     Written By ChenchuH - 2026
       ‘ ‘ ‘ ‘
      ‘ ‘ ‘ ‘
 ```

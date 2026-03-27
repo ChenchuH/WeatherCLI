@@ -18,6 +18,26 @@ weather_code_values = {
 95: "Thunderstorm", 
 }
 
+weather_code_icons = {
+0: ":sun:",
+1: ":sun_behind_small_cloud:",
+2: ":sun_behind_cloud:",
+3: ":cloud:",
+45: ":fog:",
+48: ":fog:",
+51: ":cloud_with_rain:",
+53: ":cloud_with_rain:",
+55: ":cloud_with_rain:",
+61: ":cloud_with_rain:",
+63: ":cloud_with_rain:",
+65: ":cloud_with_rain:",
+71: ":snowflake:",
+73: ":snowflake:",
+75: ":snowflake:",
+80: ":cloud_with_rain:",
+95: ":cloud_with_lightning:",
+}
+
 def wind_dir_helper(angle: float) -> str:
     card_points= ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
     index = int((angle + 22.5) % 360 //45)

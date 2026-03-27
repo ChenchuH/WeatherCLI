@@ -64,11 +64,12 @@ pipx --version
 ```bash
 weathercli <location>
 ```
+default is the ```--detailed``` output, to get the compact output you must prompt the flag ```--compact```
 
 ### Examples
 
 ```bash
-weathercli "Los Angeles, CA"
+weathercli "Los Angeles, CA" 
 weathercli "New York"
 weathercli "Vasto, Italy"
 ```

@@ -77,28 +77,35 @@ def main():
         rain = weather["current"]["precipitation"]
         rain_unit = weather["current_units"]["precipitation"]
 
+        snowfall = weather["current"]["snowfall"]
+        snowfall_unit = weather["current_units"]["snowfall"]
+
         wind_dir_cardinal = wind_dir_helper(wind_dir)
 
         dt = datetime.fromisoformat(date_time)
         formated_date_time = dt.strftime("%m/%d/%Y %I:%M %p")
 
-        rain_str=""
+        precp_str=""
 
-        if rain is not None and rain > 0:
-            rain_str=(f" · Rain {rain}{rain_unit}")
+        if snowfall is not None and rain > 0:
+            precp_str=(f" · Snow {snowfall}{snowfall_unit}")
+        elif rain is not None and rain > 0:
+            precp_str=(f" · Rain {rain}{rain_unit} ")
+
+        
 
         if args.compact and args.detailed:
             print("use weathercli --compact OR --detailed not both")
             return
         elif args.compact: 
-            print(f"[white]{desc_icons}  {temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{rain_str}[/white]")
+            print(f"[white]{desc_icons}  {temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{precp_str}[/white]")
         elif args.detailed:
             print(f"[white]{formated_date_time}[/white]") 
-            print(f"[white]{desc_icons}  {temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{rain_str}[/white]")
+            print(f"[white]{desc_icons}  {temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{precp_str}[/white]")
             print(f"[white]Humidity {humidity}% · Wind {wind_dir_cardinal} {wind_speed} {wind_speed_units} · Gusts {wind_gust} {wind_speed_units}[/white]")
         else:
             print(f"[white]{formated_date_time}[/white]") 
-            print(f"[white]{desc_icons}  {temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{rain_str}[/white]")
+            print(f"[white]{desc_icons}  {temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{precp_str}[/white]")
             print(f"[white]Humidity {humidity}% · Wind {wind_dir_cardinal} {wind_speed} {wind_speed_units} · Gusts {wind_gust} {wind_speed_units}[/white]")
 
     except Exception as e:

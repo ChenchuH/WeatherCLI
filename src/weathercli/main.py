@@ -87,7 +87,7 @@ def main():
 
         precp_str=""
 
-        if snowfall is not None and rain > 0:
+        if snowfall is not None and snowfall > 0:
             precp_str=(f" · Snow {snowfall}{snowfall_unit}")
         elif rain is not None and rain > 0:
             precp_str=(f" · Rain {rain}{rain_unit} ")

@@ -5,11 +5,12 @@ from weathercli.helpers.weather_codes import weather_code_values, wind_dir_helpe
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich import print
 import requests
-import importlib.metadata
+from importlib.metadata import version
+import argparse 
 from datetime import datetime
 import sys
 
-CURRENT_VER = importlib.metadata.version("weathercli")
+CURRENT_VER = version("weathercli")
 
 def chec_ver():
     try:
@@ -27,17 +28,30 @@ def check_for_update():
         print(f"[yellow]Update available: {CURRENT_VER} → {latest}[/yellow]")
         print("[cyan]Run: pipx upgrade weathercli[/cyan]")
 
+def parse_args():
+    parser = argparse.ArgumentParser(prog="weathercli")
+    parser.add_argument("location", nargs="*", help="location to search")
+    parser.add_argument("--version", action="store_true", help="show version")
+    parser.add_argument("--detailed", action="store_true", help="includes humidity, windspeed and direction")
+    parser.add_argument("--compact", action="store_true", help="includes only weather and percipitation")
+    return parser.parse_args()
+
+
 def main():
 
     try:
         check_for_update()
+        args = parse_args()
 
-        if len(sys.argv) < 2:
-            print("Use: Weathercli <location>")
+        if args.version:
+            print(CURRENT_VER)
+            return
+
+        if not args.location:
+            print("Use weathercli <location>")
             return
         
-        location = " ".join(sys.argv[1:])
-
+        location = " ".join(args.location)
   
         with Progress(SpinnerColumn(), TextColumn("{task.description}"), transient=True) as progress:
             task = progress.add_task("[cyan]Fetching...[/cyan]", total=2)
@@ -72,10 +86,19 @@ def main():
         if rain is not None and rain > 0:
             rain_str=(f" · Rain {rain}{rain_unit}")
 
-        print(f"[white]{formated_date_time}[/white]")
-        print(f"[white]{temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{rain_str}[/white]")
-        print(f"[white]Humidity {humidity}% · Wind {wind_dir_cardinal} {wind_speed} {wind_speed_units} · Gusts {wind_gust} {wind_speed_units}[/white]")
-
+        if args.compact and args.detailed:
+            print("use weathercli --compact OR --detailed not both")
+            return
+        elif args.compact:
+            print(f"[white]{temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{rain_str}[/white]")
+        elif args.detailed:
+            print(f"[white]{formated_date_time}[/white]") 
+            print(f"[white]{temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{rain_str}[/white]")
+            print(f"[white]Humidity {humidity}% · Wind {wind_dir_cardinal} {wind_speed} {wind_speed_units} · Gusts {wind_gust} {wind_speed_units}[/white]")
+        else:
+            print(f"[white]{formated_date_time}[/white]") 
+            print(f"[white]{temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{rain_str}[/white]")
+            print(f"[white]Humidity {humidity}% · Wind {wind_dir_cardinal} {wind_speed} {wind_speed_units} · Gusts {wind_gust} {wind_speed_units}[/white]")
 
     except Exception as e:
         print(f"error: {e}")

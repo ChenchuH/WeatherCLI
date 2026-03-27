@@ -1,15 +1,20 @@
-```
-    \  /          WEATHER CLI
-  _ /"".-.        ───────────
-    \_(   ).      Fast • Simple • Terminal Weather
-    /(___(__)     Written by ChenchuH — 2026
-      ‘ ‘ ‘ ‘
-     ‘ ‘ ‘ ‘
-```
+## 🌤️ WEATHER CLI
+Fast • Simple • Terminal Weather
 
 A fast, minimal command-line weather tool powered by Open-Meteo.
 
+![Python](https://img.shields.io/badge/python-3.10+-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 ---
+
+## Sample output 
+```weathercli Los Angeles, CA --detailed```
+
+![detailed output](image.png)
+
+```weathercli Los Angeles, CA --compact```
+
+![compact output](image-1.png)
 
 ## Installation
 
@@ -77,8 +82,8 @@ pipx upgrade weathercli
 
 ---
 
-## Development (run locally)
-
+## Development
+Be sure to install the requirements.txt when running locally
 ```bash
 PYTHONPATH=src python -m weathercli.main "<location>"
 ```
@@ -98,3 +103,4 @@ PYTHONPATH=src python -m weathercli.main "Los Angeles, CA"
 - More natural input handling
 
 ## License MIT
+

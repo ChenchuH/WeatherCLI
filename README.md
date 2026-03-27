@@ -34,6 +34,9 @@ pipx ensurepath
 
 verify install via 
 ``` pipx --version ```
+
+
+### Currently Ver 1.0.3
 ### Planned 1.1.0 update
 - units will start in C as default but upon further iterations, you will have the option to dictate units. 
 - will create week forcast and more natural fetching language 

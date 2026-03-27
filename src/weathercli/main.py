@@ -29,7 +29,7 @@ def check_for_update():
         print("[cyan]Run: pipx upgrade weathercli[/cyan]")
 
 def parse_args():
-    parser = argparse.ArgumentParser(prog="weathercli")
+    parser = argparse.ArgumentParser(prog="weathercli", description="Get current weather for any location from the terminal.")
     parser.add_argument("location", nargs="*", help="location to search")
     parser.add_argument("--version", action="store_true", help="show version")
     parser.add_argument("--detailed", action="store_true", help="includes humidity, windspeed and direction")

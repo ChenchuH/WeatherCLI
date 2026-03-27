@@ -2,11 +2,9 @@
 
 ## Usage
 
-1. ```weathercli```
+```weathercli <location>```
 
-2. ```Weather in x ```
-
-ex. ```Weather in Los Angeles```
+ex. ```weathercli Los Angeles```
 
 ## To run script
 

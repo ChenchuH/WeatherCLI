@@ -1,7 +1,7 @@
 from weathercli.helpers.weather_service import get_weather_data
 from weathercli.helpers.location_service import get_location_data
-from weathercli.helpers.weather_codes import weather_code_values
-from weathercli.helpers.weather_codes import wind_dir_helper
+from weathercli.helpers.weather_codes import weather_code_values, wind_dir_helper
+
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich import print
 import requests
@@ -28,14 +28,16 @@ def check_for_update():
         print("[cyan]Run: pipx upgrade weathercli[/cyan]")
 
 def main():
-    check_for_update()
-    query = input("> ").strip()
-    if not query.lower().startswith("weather at "):
-        print("Use: Weather at <location>")
-        exit()
-    location = query[11:].strip()
 
     try:
+        check_for_update()
+        query = input("> ").strip()
+        if not query.lower().startswith("weather at "):
+            print("Use: Weather at <location>")
+            exit()
+        location = query[11:].strip()
+
+  
         with Progress(SpinnerColumn(), TextColumn("{task.description}"), transient=True) as progress:
             task = progress.add_task("[cyan]Fetching...[/cyan]", total=2)
             lat, long = get_location_data(location)

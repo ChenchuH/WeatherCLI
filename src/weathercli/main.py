@@ -7,6 +7,7 @@ from rich import print
 import requests
 import importlib.metadata
 from datetime import datetime
+import sys
 
 CURRENT_VER = importlib.metadata.version("weathercli")
 
@@ -64,6 +65,11 @@ def main():
 
     except Exception as e:
         print(f"error: {e}")
+
+    except KeyboardInterrupt:
+        print("\nExiting...")
+        sys.exit(0)
+
 
 if __name__=="__main__":
     main()

@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "weathercli"
 authors = [{name = "Chenchu Hemanth Yakasiri Saravanan"}]
 license = {text = "MIT"}
-version = "1.0.3"
+version = "1.0.4"
 description = "Simple terminal weather CLI"
 keywords = ["weather", "cli", "terminal"]
 readme = "README.md"

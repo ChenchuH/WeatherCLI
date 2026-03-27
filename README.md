@@ -10,11 +10,16 @@ A fast, minimal command-line weather tool powered by Open-Meteo.
 ## Sample output 
 ```weathercli Los Angeles, CA --detailed```
 
-![detailed output](image.png)
+```
+03/27/2026 11:30 AM
+🌤  19.8°C (feels 21.5°C) · Mainly clear
+Humidity 79% · Wind SW 7.8 km/h · Gusts 11.2 km/h
+```
 
 ```weathercli Los Angeles, CA --compact```
-
-![compact output](image-1.png)
+```
+🌤  19.8°C (feels 21.5°C) · Mainly clear
+```
 
 ## Installation
 

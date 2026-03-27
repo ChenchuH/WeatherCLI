@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Chenchu Hemanth Yakasiri Saravanan
+# Licensed under the MIT License
+
 import requests
 
 def get_weather_data(lat, lon):

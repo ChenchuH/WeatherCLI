@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Chenchu Hemanth Yakasiri Saravanan
+# Licensed under the MIT License
+
 from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent="WeatherCLI")
 

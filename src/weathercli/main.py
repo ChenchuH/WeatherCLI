@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Chenchu Hemanth Yakasiri Saravanan
+# Licensed under the MIT License
+
 from weathercli.helpers.weather_service import get_weather_data
 from weathercli.helpers.location_service import get_location_data
 from weathercli.helpers.weather_codes import weather_code_values, weather_code_icons, wind_dir_helper

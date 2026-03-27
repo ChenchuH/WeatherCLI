@@ -1,10 +1,20 @@
-## General weather tool
+```
+    \  /          WEATHER CLI
+  _ /"".-.        ───────────
+    \_(   ).      Fast • Simple • Terminal Weather
+    /(___(__)
+      ‘ ‘ ‘ ‘
+     ‘ ‘ ‘ ‘
+```
 
 ## Usage
 
-```weathercli <location>```
+```weathercli <location>``` 
 
-ex. ```weathercli Los Angeles```
+ex. ```weathercli Los Angeles, CA```
+
+for assistance in using the tool 
+```weatherclie -help```
 
 ## To run script
 

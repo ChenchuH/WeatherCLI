@@ -40,13 +40,12 @@ def parse_args():
 def main():
 
     try:
-        check_for_update()
         args = parse_args()
 
         if args.version:
             print(CURRENT_VER)
             return
-
+        check_for_update()
         if not args.location:
             print("Use weathercli <location>")
             return
@@ -108,12 +107,13 @@ def main():
             print(f"[white]{desc_icons}  {temp}{temp_unit} (feels {apparent_temp}{temp_unit}) · {desc}{precp_str}[/white]")
             print(f"[white]Humidity {humidity}% · Wind {wind_dir_cardinal} {wind_speed} {wind_speed_units} · Gusts {wind_gust} {wind_speed_units}[/white]")
 
-    except Exception as e:
-        print(f"error: {e}")
-
     except KeyboardInterrupt:
         print("\nExiting...")
         sys.exit(0)
+    except Exception as e:
+        print(f"error: {e}")
+
+
 
 
 if __name__=="__main__":

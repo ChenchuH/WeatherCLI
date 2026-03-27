@@ -7,20 +7,30 @@ A fast, minimal command-line weather tool powered by Open-Meteo.
 ![License](https://img.shields.io/badge/license-MIT-green)
 ---
 
-## Sample output 
-```weathercli Los Angeles, CA --detailed```
+## Sample commands
+```
+wsldev@HomePC-Win11PRO:~$ weathercli
+Use weathercli <location>
+wsldev@HomePC-Win11PRO:~$ weathercli --h
+usage: weathercli [-h] [--version] [--detailed] [--compact] [location ...]
 
-```
-03/27/2026 11:30 AM
-🌤  19.8°C (feels 21.5°C) · Mainly clear
-Humidity 79% · Wind SW 7.8 km/h · Gusts 11.2 km/h
-```
+Get current weather for any location from the terminal.
 
-```weathercli Los Angeles, CA --compact```
-```
-🌤  19.8°C (feels 21.5°C) · Mainly clear
-```
+positional arguments:
+  location    location to search
 
+options:
+  -h, --help  show this help message and exit
+  --version   show version
+  --detailed  includes humidity, windspeed and direction
+  --compact   includes only weather and percipitation
+wsldev@HomePC-Win11PRO:~$ weathercli Torrance, CA 90505 --detailed
+03/27/2026 11:45 AM
+⛅  18.7°C (feels 20.3°C) · Partly cloudy
+Humidity 88% · Wind W 8.0 km/h · Gusts 9.4 km/h
+wsldev@HomePC-Win11PRO:~$ weathercli Torrance, CA 90505 --compact
+⛅  18.7°C (feels 20.3°C) · Partly cloudy
+```
 ## Installation
 
 ### Recommended (via pipx)

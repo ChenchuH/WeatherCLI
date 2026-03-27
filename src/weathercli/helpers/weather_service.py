@@ -3,7 +3,7 @@ import requests
 def get_weather_data(lat, lon):
     try:
         res = requests.get("https://api.open-meteo.com/v1/forecast", 
-                        params={"latitude":lat, "longitude":lon, "current": "temperature_2m,apparent_temperature,wind_speed_10m,wind_direction_10m,wind_gusts_10m,relative_humidity_2m,weather_code", "timezone": "auto"}, timeout=5)
+                        params={"latitude":lat, "longitude":lon, "current": "temperature_2m,apparent_temperature,wind_speed_10m,wind_direction_10m,wind_gusts_10m,relative_humidity_2m,weather_code,precipitation", "timezone": "auto"}, timeout=5)
         #Current means weather values CURRENTLY in the API param
         res.raise_for_status()
         data = res.json()

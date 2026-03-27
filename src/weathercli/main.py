@@ -57,13 +57,15 @@ def main():
         wind_dir = weather["current"]["wind_direction_10m"]
         humidity = weather["current"]["relative_humidity_2m"]
         date_time = weather["current"]["time"]
+        rain = weather["current"]["precipitation"]
+        rain_unit = weather["current_units"]["precipitation"]
 
         wind_dir_cardinal = wind_dir_helper(wind_dir)
 
         dt = datetime.fromisoformat(date_time)
         formated_date_time = dt.strftime("%m/%d/%Y %I:%M %p")
 
-        print(f"[bold][white]{formated_date_time} · {temp}{weather_unit} (feels {apparent_temp}{weather_unit}) · {desc}\nHumidity {humidity}% · Wind {wind_dir_cardinal} {wind_speed}{wind_speed_units} (gusts {wind_gust}{wind_speed_units})[/white][/bold]")
+        print(f"[bold][white]{formated_date_time} · {temp}{weather_unit} (feels {apparent_temp}{weather_unit}) · {desc}\nHumidity {humidity}% · Wind {wind_dir_cardinal} {wind_speed}{wind_speed_units} (gusts {wind_gust}{wind_speed_units}) · Rain {rain}{rain_unit}[/white][/bold]")
 
     except Exception as e:
         print(f"error: {e}")

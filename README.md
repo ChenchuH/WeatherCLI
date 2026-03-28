@@ -120,5 +120,8 @@ PYTHONPATH=src python -m weathercli.main "Los Angeles, CA"
 - Weekly forecast
 - More natural input handling
 
+## Open Meteo Documentation
+https://open-meteo.com/en/docs
+
 ## License MIT
 

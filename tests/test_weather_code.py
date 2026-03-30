@@ -29,8 +29,11 @@ def test_weather_dic_lookup_clear_sky():
             "precipitation": "in",
             "snowfall": "in",
         },
+        "hourly": {
+            "temperature_2m": [65, 66, 67, 68, 69, 70, 71, 72]
+        }
     }
-
+    
     result = weather_dic_lookup(fake_weather)
 
     assert result["code"] == 0

@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Chenchu Hemanth Yakasiri Saravanan
+# Licensed under the MIT License
+
 import argparse
 
 def parse_args():

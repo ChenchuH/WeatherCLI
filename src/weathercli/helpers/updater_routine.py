@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Chenchu Hemanth Yakasiri Saravanan
+# Licensed under the MIT License
 
 import requests
 from rich import print

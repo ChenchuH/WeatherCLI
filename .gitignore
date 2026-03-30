@@ -2,4 +2,4 @@
 src/weathercli/helpers/__pycache__
 src/weathercli/__pycache__
 src/weathercli.egg-info
-
+.pytest_cache

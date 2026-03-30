@@ -45,3 +45,25 @@ def wind_dir_helper(angle: float) -> str:
     card_points= ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
     index = int((angle + 22.5) % 360 //45)
     return card_points[index]
+
+def weather_dic_lookup(weather):
+    code = weather["current"]["weather_code"]
+
+    return {
+        "code": code,
+        "desc": weather_code_values.get(code, "Unknown"),
+        "desc_icons": weather_code_icons.get(code, "Unknown"),
+        "temp": weather["current"]["temperature_2m"],
+        "apparent_temp": weather["current"]["apparent_temperature"],
+        "temp_unit": weather["current_units"]["temperature_2m"],
+        "wind_speed": weather["current"]["wind_speed_10m"],
+        "wind_speed_units": weather["current_units"]["wind_speed_10m"],
+        "wind_gust": weather["current"]["wind_gusts_10m"],
+        "wind_dir": weather["current"]["wind_direction_10m"],
+        "humidity": weather["current"]["relative_humidity_2m"],
+        "date_time": weather["current"]["time"],
+        "rain": weather["current"]["precipitation"],
+        "rain_unit": weather["current_units"]["precipitation"],
+        "snowfall": weather["current"]["snowfall"],
+        "snowfall_unit": weather["current_units"]["snowfall"],
+    }

@@ -48,11 +48,12 @@ def wind_dir_helper(angle: float) -> str:
 
 def weather_dic_lookup(weather):
     code = weather["current"]["weather_code"]
-
+    
     return {
         "code": code,
         "desc": weather_code_values.get(code, "Unknown"),
         "desc_icons": weather_code_icons.get(code, "Unknown"),
+        "sparklines_range": weather["hourly"]["temperature_2m"],
         "temp": weather["current"]["temperature_2m"],
         "apparent_temp": weather["current"]["apparent_temperature"],
         "temp_unit": weather["current_units"]["temperature_2m"],

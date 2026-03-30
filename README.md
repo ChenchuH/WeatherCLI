@@ -26,12 +26,13 @@ options:
   --compact   includes only weather and percipitation
 
 wsldev@HomePC-Win11PRO:~$ weathercli Torrance, CA 90505 --detailed
-03/27/2026 11:45 AM
-⛅  18.7°C (feels 20.3°C) · Partly cloudy
-Humidity 88% · Wind W 8.0 km/h · Gusts 9.4 km/h
+03/30/2026 12:45 PM
+▁▂▁▁▁▁▁▁▂▂▄▄▅▆▆▇█▇▆▄▄▄▃▃
+☁  19.3°C (feels 19.6°C) · Overcast
+Humidity 81% · Wind SE 11.6 km/h · Gusts 14.8 km/h
 
 wsldev@HomePC-Win11PRO:~$ weathercli Torrance, CA 90505 --compact
-⛅  18.7°C (feels 20.3°C) · Partly cloudy
+☁  19.3°C (feels 19.6°C) · Overcast
 ```
 ## Installation
 

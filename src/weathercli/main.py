@@ -42,10 +42,19 @@ def main():
         formated_date_time = dt.strftime("%m/%d/%Y %I:%M %p")
         precp_str=""
 
+
         if weather_info["snowfall"] is not None and weather_info["snowfall"] > 0:
             precp_str=(f" · Snow {weather_info["snowfall"]}{weather_info["snowfall_unit"]}")
         elif weather_info["rain"] is not None and weather_info["rain"] > 0:
             precp_str=(f" · Rain {weather_info["rain"]}{weather_info["rain_unit"]} ")
+        elif args.f:
+            if weather_info.get("temp") is not None:
+                weather_info["temp"] = round((weather_info["temp"]*9/5)+32,1)
+                weather_info["temp_unit"] = "F" 
+
+            if weather_info.get("apparent_temp") is not None:
+                weather_info["apparent_temp"] = round((weather_info["apparent_temp"]*9/5)+32,1)
+                weather_info["temp_unit"] = "F"
 
         if args.compact and args.detailed:
             print("use weathercli --compact OR --detailed not both")
@@ -53,9 +62,10 @@ def main():
         elif args.compact: 
             compact(weather_info, precp_str)
         elif args.detailed:
-            detailed(weather_info, precp_str, formated_date_time, wind_dir_cardinal)
+            detailed(weather_info, precp_str, formated_date_time, wind_dir_cardinal)    
         else:
             detailed(weather_info, precp_str, formated_date_time, wind_dir_cardinal)
+
 
     except KeyboardInterrupt:
         print("\nExiting...")

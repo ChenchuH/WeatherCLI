@@ -120,7 +120,7 @@ PYTHONPATH=src python -m weathercli.main "Los Angeles, CA"
 
 ## Planned (v1.1.0)
 
-- Unit selection (°C / °F)
+- ~~Unit selection (°C / °F)~~
 - Weekly forecast
 - More natural input handling
 

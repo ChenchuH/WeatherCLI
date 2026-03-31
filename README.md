@@ -12,18 +12,20 @@ A fast, minimal command-line weather tool powered by Open-Meteo.
 wsldev@HomePC-Win11PRO:~$ weathercli
 Use weathercli <location>
 
-wsldev@HomePC-Win11PRO:~$ weathercli --h
-usage: weathercli [-h] [--version] [--detailed] [--compact] [location ...]
+wsldev@HomePC-Win11PRO:~/projects/WeatherCLI$ weathercli -h
+usage: weathercli [-h] [--version] [--detailed] [--compact] [--f] [location ...]
 
 Get current weather for any location from the terminal.
 
 positional arguments:
   location    location to search
+
 options:
   -h, --help  show this help message and exit
   --version   show version
   --detailed  includes humidity, windspeed and direction
   --compact   includes only weather and percipitation
+  --f         Display units in Fahrenheit as opposed to default Celcius, ex. weathercli <location> --f or weathercli <location> <detailed/compact flag> --f
 
 wsldev@HomePC-Win11PRO:~$ weathercli Torrance, CA 90505 --detailed
 03/30/2026 12:45 PM
@@ -89,6 +91,7 @@ weathercli --help
 |--------------|--------------------------------------|
 | `--compact`  | Minimal output                       |
 | `--detailed` | Full weather details                 |
+| `--f`        | Unit conversion to fahrenheit        |
 | `--version`  | Show installed version               |
 
 ---
